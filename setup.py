@@ -11,7 +11,7 @@ setuptools.setup(
     description='A Python Package for Interacting with SmartThings',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='',
+    url='https://github.com/kalebr3/python-smartthings',
     packages=setuptools.find_packages(),
     install_requires=[
         'requests',
