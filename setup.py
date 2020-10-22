@@ -5,7 +5,7 @@ with open('README.md') as fh:
 
 setuptools.setup(
     name='python-smartthings-kalebr3',
-    version='2020.10a1',
+    version='1.0.0a1',
     author='Kaleb Redman',
     author_email='kaleb@redman.us',
     description='A Python Package for Interacting with SmartThings',

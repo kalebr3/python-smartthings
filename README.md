@@ -1,3 +1,5 @@
-# Custom SmartThings Integrator
+# Python SmartThings
 
-This module was custom built for integrating with the SmartThings API.
+## Version: 1.0.0a1 - Pre-Release Alpha
+
+This package was custom built for using python to interact with SmartThings.
