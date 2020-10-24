@@ -45,7 +45,7 @@ ST.scenes    # {LOCATION_NAME:{SCENE_NAME:SCENE_ID}}
 These dictionaries can be used with the included methods to execute actions on devices and scenes.
 
 ```python
-ST.command_device(ST.devices[LOCATION_NAME][DEVICE_NAME], capability=None, command=None, arguments=None)
+ST.control_device(ST.devices[LOCATION_NAME][DEVICE_NAME], capability=None, command=None, arguments=None)
 # Reference the SmartThings API documentation for information regarding the format of capabilities, commands, and arguments
 
 ST.execute_scene(ST.scenes[LOCATION_NAME][DEVICE_NAME])

@@ -6,8 +6,10 @@ class Account:
     def __init__(self, token:str):
         """Constructor Method
 
-        :param token: SmartThings Personal Access Token
-        :type token: str
+        Parameters
+        ----------
+        token : str
+            SmartThings Personal Access Token
         """
 
         print('Connecting to SmartThings Service...')
@@ -21,19 +23,28 @@ class Account:
         print('Connected and Ready!')
 
     def _api_call(self, method:str, path:str, params:dict, data:dict) -> requests.Response:
-        """Calls the SmartThings API with given parameters
+        """Calls SmartThings API using given parameters.
 
-        :param method: Type of request i.e. get, post
-        :type method: str
-        :param path: Relative path added to main url
-        :type path: str
-        :param params: Parameters passed to the http request
-        :type params: dict
-        :param data: Data passed to the http request
-        :type data: dict
-        :raises NotImplementedError: Invalid value for the parameter: method
-        :return: Response object from http request
-        :rtype: requests.Response
+        Parameters
+        ----------
+        method : str
+            Type of http request. i.e. get, post
+        path : str
+            Relative path added to base url.
+        params : dict
+            Parameters passed to http request.
+        data : dict
+            Data passed to http request.
+
+        Returns
+        -------
+        requests.Response
+            Response from http request.
+
+        Raises
+        ------
+        NotImplementedError
+            Invalid value for parameter: method.
         """
 
         url = 'https://api.smartthings.com'
@@ -61,6 +72,14 @@ class Account:
         return response
 
     def _get_locations(self) -> dict:
+        """Gets locations via `_api_call()`
+
+        Returns
+        -------
+        dict
+            Dictionary object populated with the locations retrieved.
+        """
+
         _locations = {}
         response_json = self._api_call(
             method='get',
@@ -73,6 +92,14 @@ class Account:
         return _locations
 
     def _get_devices(self) -> dict:
+        """Gets devices via `_api_call()`
+
+        Returns
+        -------
+        dict
+            Dictionary object populated with the devices retrieved.
+        """
+
         _devices = {}
         for location in self.locations:
             _temp = {}
@@ -88,6 +115,14 @@ class Account:
         return _devices
 
     def _get_scenes(self) -> dict:
+        """Gets scenes via `_api_call()`
+
+        Returns
+        -------
+        dict
+            Dictionary object populated with the scenes retrieved.
+        """
+
         _scenes = {}
         for location in self.locations:
             _temp = {}
@@ -102,7 +137,23 @@ class Account:
             _scenes[location] = _temp
         return _scenes
 
-    def command_device(self, deviceId:str, capability:str, command:dict, arguments:dict):
+    def control_device(self, deviceId:str, capability:str, command:dict, arguments:dict):
+        """Sends a comand to a specified device.
+
+        Parameters
+        ----------
+        deviceId : str
+            The unique identifier of the device to control.
+            Can be the identifier passed in as a string, or called via the
+            `locations` dictionary.
+        capability : str
+            The device capability to control.
+        command : dict
+            The command to send to the device.
+        arguments : dict
+            Any additional arguments required by the capability controlled.
+        """
+
         response = self._api_call(
             method='post',
             path=f'/devices/{deviceId}/commands',
@@ -116,6 +167,16 @@ class Account:
         return response.raise_for_status()
 
     def execute_scene(self, sceneId:str):
+        """Executes the specified scene.
+
+        Parameters
+        ----------
+        sceneId : str
+            The unique identifier of the scene to execute.
+            Can be the identifier passed in as a string, or referenced via the
+            `scenes` dictionary.
+        """
+
         response = self._api_call(
             method='post',
             path=f'/scenes/{sceneId}/execute',
