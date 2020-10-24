@@ -36,7 +36,7 @@ class Account:
                 data=data,
             )
         else:
-            response = 'INVALID VALUE FOR method ON FUCNTION _api_call'
+            raise NotImplementedError('INVALID VALUE FOR method ON FUCNTION _api_call')
         return response
 
     def _get_locations(self):
