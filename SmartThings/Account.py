@@ -3,7 +3,7 @@ import requests
 
 class Account:
 
-    def __init__(self, token):
+    def __init__(self, token:str):
         print('Connecting to SmartThings Service...')
         self._token = token
         print('Retrieving Locations...')
@@ -14,7 +14,7 @@ class Account:
         self.scenes = self._get_scenes()
         print('Connected and Ready!')
 
-    def _api_call(self, method, path, params, data):
+    def _api_call(self, method:str, path:str, params:dict, data:dict) -> requests.Response:
         url = 'https://api.smartthings.com'
         headers = {
             'Accept': 'application/vnd.smartthings+json;v=1',
@@ -39,7 +39,7 @@ class Account:
             raise NotImplementedError('INVALID VALUE FOR method ON FUCNTION _api_call')
         return response
 
-    def _get_locations(self):
+    def _get_locations(self) -> dict:
         _locations = {}
         response_json = self._api_call(
             method='get',
@@ -51,7 +51,7 @@ class Account:
             _locations[location["name"]] = location["locationId"]
         return _locations
 
-    def _get_devices(self):
+    def _get_devices(self) -> dict:
         _devices = {}
         for location in self.locations:
             _temp = {}
@@ -66,7 +66,7 @@ class Account:
             _devices[location] = _temp
         return _devices
 
-    def _get_scenes(self):
+    def _get_scenes(self) -> dict:
         _scenes = {}
         for location in self.locations:
             _temp = {}
@@ -81,7 +81,7 @@ class Account:
             _scenes[location] = _temp
         return _scenes
 
-    def command_device(self, deviceId, capability, command, arguments):
+    def command_device(self, deviceId:str, capability:str, command:dict, arguments:dict):
         response = self._api_call(
             method='post',
             path=f'/devices/{deviceId}/commands',
@@ -94,7 +94,7 @@ class Account:
         )
         return response.raise_for_status()
 
-    def execute_scene(self, sceneId):
+    def execute_scene(self, sceneId:str):
         response = self._api_call(
             method='post',
             path=f'/scenes/{sceneId}/execute',
