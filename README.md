@@ -6,7 +6,7 @@
 
 This package was built for using python to interact with SmartThings.
 
-## Requirements
+## Dependencies
 
 - Python >=3.7
 - Packages
@@ -27,6 +27,8 @@ import SmartThings
 ```
 
 Create an instance of a SmartThings account using your Personal Access Token.
+
+> Vist [https://account.smartthings.com/tokens](https://account.smartthings.com/tokens) to create or revoke Personal Access Tokens.
 
 ```python
 ST = SmartThings.Account(PERSONAL_ACCESS_TOKEN)
