@@ -2,9 +2,29 @@ import requests
 
 
 class Account:
+    """
+    Class for the creation of an instance of a SmartThings Account.
+
+    Attributes
+    ----------
+    locations : dict
+        Locations retrieved via the `_get_locations()` method.
+    devices : dict
+        Devices retrieved via the `_get_devices()` method.
+    scenes : dict
+        Scenes retrieved via the `_get_scenes()` method.
+
+    Methods
+    -------
+    control_device(deviceId:str, capability:str, command:dict, arguments:dict)
+        Sends a command to a specific device.
+    execute_scene(sceneId:str)
+        Executes the specified scene.
+    """
 
     def __init__(self, token:str):
-        """Constructor Method
+        """
+        Constructor Method
 
         Parameters
         ----------
@@ -23,7 +43,8 @@ class Account:
         print('Connected and Ready!')
 
     def _api_call(self, method:str, path:str, params:dict, data:dict) -> requests.Response:
-        """Calls SmartThings API using given parameters.
+        """
+        Calls SmartThings API using given parameters.
 
         Parameters
         ----------
@@ -72,7 +93,8 @@ class Account:
         return response
 
     def _get_locations(self) -> dict:
-        """Gets locations via `_api_call()`
+        """
+        Gets locations via `_api_call()`
 
         Returns
         -------
@@ -92,7 +114,8 @@ class Account:
         return _locations
 
     def _get_devices(self) -> dict:
-        """Gets devices via `_api_call()`
+        """
+        Gets devices via `_api_call()`
 
         Returns
         -------
@@ -115,7 +138,8 @@ class Account:
         return _devices
 
     def _get_scenes(self) -> dict:
-        """Gets scenes via `_api_call()`
+        """
+        Gets scenes via `_api_call()`
 
         Returns
         -------
@@ -138,7 +162,8 @@ class Account:
         return _scenes
 
     def control_device(self, deviceId:str, capability:str, command:dict, arguments:dict):
-        """Sends a comand to a specified device.
+        """
+        Sends a comand to a specified device.
 
         Parameters
         ----------
@@ -167,7 +192,8 @@ class Account:
         return response.raise_for_status()
 
     def execute_scene(self, sceneId:str):
-        """Executes the specified scene.
+        """
+        Executes the specified scene.
 
         Parameters
         ----------
