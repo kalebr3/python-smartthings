@@ -4,6 +4,12 @@ import requests
 class Account:
 
     def __init__(self, token:str):
+        """Constructor Method
+
+        :param token: SmartThings Personal Access Token
+        :type token: str
+        """
+
         print('Connecting to SmartThings Service...')
         self._token = token
         print('Retrieving Locations...')
@@ -15,6 +21,21 @@ class Account:
         print('Connected and Ready!')
 
     def _api_call(self, method:str, path:str, params:dict, data:dict) -> requests.Response:
+        """Calls the SmartThings API with given parameters
+
+        :param method: Type of request i.e. get, post
+        :type method: str
+        :param path: Relative path added to main url
+        :type path: str
+        :param params: Parameters passed to the http request
+        :type params: dict
+        :param data: Data passed to the http request
+        :type data: dict
+        :raises NotImplementedError: Invalid value for the parameter: method
+        :return: Response object from http request
+        :rtype: requests.Response
+        """
+
         url = 'https://api.smartthings.com'
         headers = {
             'Accept': 'application/vnd.smartthings+json;v=1',
