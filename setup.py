@@ -4,10 +4,10 @@ with open('README.md') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='python-smartthings-kalebr3',
+    name='python-smartthings',
     version='1.0.0a1',
     author='Kaleb Redman',
-    author_email='kaleb@redman.us',
+    author_email='dev@redman.us',
     description='A Python Package for Interacting with SmartThings',
     long_description=long_description,
     long_description_content_type='text/markdown',
