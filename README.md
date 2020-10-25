@@ -1,8 +1,8 @@
 # Python SmartThings
 
-| Version | Stage       |
-| ------- | ----------- |
-| 1.0.0a1 | Pre-Release |
+| Version | Stage   |
+| ------- | ------- |
+|  1.0.0  | Release |
 
 This purpose for the creation of this package is twofold. The main reason I
 created this package is to be able to issue commands to my Z-Wave devices via

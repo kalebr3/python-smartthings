@@ -5,7 +5,7 @@ with open('README.md') as fh:
 
 setuptools.setup(
     name='python-smartthings',
-    version='1.0.0a1',
+    version='1.0.0',
     author='Kaleb Redman',
     author_email='dev@redman.us',
     description='A Python Package for Interacting with SmartThings',
