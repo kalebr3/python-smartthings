@@ -133,7 +133,7 @@ class Account:
                 data=None,
             ).json()
             for device in response_json['items']:
-                _temp[device["name"]] = device["deviceId"]
+                _temp[device["label"]] = device["deviceId"]
             _devices[location] = _temp
         return _devices
 
